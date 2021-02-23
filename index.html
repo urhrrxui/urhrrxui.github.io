@@ -47,10 +47,9 @@ utotal = 0;
     localStorage.set("item"+utotal,regtxt);
     localStorage.total=utotal;
     
-    
-	let li = document.createElement('li');
-	li.innerHTML = localStorage.get("item"+utotal);
-        parent.prepend(li);
+	let p = document.createElement('p');
+p.innerHTML = localStorage.get("item"+utotal);
+        parent.prepend(p);
 
         //document.getElementById('myform').submit();
 }
@@ -78,14 +77,14 @@ step5
 <input id="cb" type="button" value="get clipboard" onClick="getClipboardContent();">
 <input id="text" type="text" name="phone">
 
-<ul id="parent"></ul>
+<div id="parent"></div>
 	</form>
 <script>
     let parent = document.getElementById("parent");
     for (let i = 1; i <= parseInt(localStorage.total,10); i++) {
-	let li = document.createElement('li');
-	li.innerHTML = localStorage.get("item"+i);
-        parent.prepend(li);
+	let p = document.createElement('p');
+	.innerHTML = localStorage.get("item"+i);
+        parent.prepend(p);
 }
 if('serviceWorker' in navigator){ navigator.serviceWorker.register('/service-worker.js');} else { console.log("Service worker is not supported"); }
 </script>
