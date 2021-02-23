@@ -83,7 +83,7 @@ step6
     let parent = document.getElementById("parent");
     for (let i = 1; i <= parseInt(localStorage.total,10); i++) {
 	let p = document.createElement('p');
-	.innerHTML = localStorage.get("item"+i);
+p.innerHTML = localStorage.get("item"+i);
         parent.prepend(p);
 }
 if('serviceWorker' in navigator){ navigator.serviceWorker.register('/service-worker.js');} else { console.log("Service worker is not supported"); }
