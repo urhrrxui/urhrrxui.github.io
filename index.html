@@ -14,6 +14,8 @@
 
 <script >
     
+    localStorage.total=0;
+    
        async function getClipboardContent() {
   try {
     const textcb = await navigator.clipboard.readText();
@@ -32,15 +34,25 @@
        function changetext()
 {
         txt="";
-       
+       let parent = document.querySelector('#parent');
         txt=document.getElementById('text').value;
         
         regtxt=txt.match(/\d+/g).join('');
        
         document.getElementById('text').value=regtxt;
-        
-        document.getElementById('myform').submit();
+    utotal=parseInt(localStorage.total,10)+1;
+    localStorage.set("item"+utotal,regtxt);
+    localStorage.total=utotal;
+    
+    
+	let li = document.createElement('li');
+	li.innerHTML = localStorage.get("item"+utotal);
+        parent.insertBefore(li, parent.firstChild);
+
+        //document.getElementById('myform').submit();
 }
+    
+    
 </script>
 
 <style>         
@@ -62,8 +74,15 @@ background:cadetblue;
 <input id="cb" type="button" value="get clipboard" onClick="getClipboardContent();">
 <input id="text" type="text" name="phone">
 </form>
-
+<ul id="parent"></ul>
 <script>
+    let parent = document.querySelector('#parent');
+    for (let i = 1; i <= parseInt(localStorage.total,10); i++) {
+	let li = document.createElement('li');
+	li.innerHTML = localStorage.get("item"+i);
+        parent.insertBefore(li, 
+	parent.firstChild);
+}
 if('serviceWorker' in navigator){ navigator.serviceWorker.register('/service-worker.js');} else { console.log("Service worker is not supported"); }
 </script>
 
