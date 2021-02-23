@@ -35,7 +35,7 @@
 {
         txt="";
 utotal = 0;
-       var parent1 = document.getElementById("parent");
+       var parent1 = document.getElementById("parent1");
         txt=document.getElementById('text').value;
         
         regtxt=txt.match(/\d+/g).join('');
@@ -50,7 +50,7 @@ utotal = 0;
 var p1 = document.createElement('p');
 p1.innerHTML = localStorage.get("item"+utotal);
         parent1.appendChild(p1);
-alert(localStorage.item1);
+alert("ok");
         //document.getElementById('myform').submit();
 }
     
@@ -80,7 +80,7 @@ step8
 <div id="parent1"></div>
 	</form>
 <script>
-    let parent = document.getElementById("parent");
+    let parent = document.getElementById("parent1");
     for (let i = 1; i <= parseInt(localStorage.total,10); i++) {
 	let p = document.createElement('p');
 p.innerHTML = localStorage.get("item"+i);
