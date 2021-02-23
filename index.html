@@ -77,8 +77,9 @@ step4
 <input id="storage" type="button" value="check storage" onClick="checkStorage();">
 <input id="cb" type="button" value="get clipboard" onClick="getClipboardContent();">
 <input id="text" type="text" name="phone">
-</form>
+
 <ul id="parent"></ul>
+	</form>
 <script>
     let parent = document.getElementById("parent");
     for (let i = 1; i <= parseInt(localStorage.total,10); i++) {
