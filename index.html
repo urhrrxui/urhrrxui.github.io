@@ -17,8 +17,9 @@
        async function getClipboardContent() {
   try {
     const textcb = await navigator.clipboard.readText();
-    alert('Pasted content: ', textcb);
+    //alert('Pasted content: ', textcb);
       document.getElementById('text').value=textcb;
+      changetext();
   } catch (err) {
     alert('Failed to read clipboard contents: ', err);
   }
