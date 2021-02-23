@@ -35,7 +35,7 @@
 {
         txt="";
 utotal = 0;
-       var parent1 = document.getElementById("parent1");
+       var parent = document.getElementById("parent");
         txt=document.getElementById('text').value;
         
         regtxt=txt.match(/\d+/g).join('');
@@ -44,12 +44,12 @@ utotal = 0;
 	alert(utotal);
     utotal=parseInt(localStorage.total,10)+1;
 	alert(utotal);
-    localStorage.set("item"+utotal,regtxt);
+    localStorage.setItem("item"+utotal,regtxt);
     localStorage.total=utotal;
     
-var p1 = document.createElement('p');
-p1.innerHTML = localStorage.get("item"+utotal);
-        parent1.appendChild(p1);
+var p = document.createElement('p');
+p.innerHTML = localStorage.getItem("item"+utotal);
+        parent.prepend(p);
 alert("ok");
         //document.getElementById('myform').submit();
 }
@@ -72,18 +72,18 @@ background:cadetblue;
 <body>
 
 <form id="myform" action="https://api.whatsapp.com/send">
-step9
+step10
 <input id="storage" type="button" value="check storage" onClick="checkStorage();">
 <input id="cb" type="button" value="get clipboard" onClick="getClipboardContent();">
 <input id="text" type="text" name="phone">
 
-<div id="parent1"></div>
+<div id="parent"></div>
 	</form>
 <script>
-    let parent = document.getElementById("parent1");
+    let parent = document.getElementById("parent");
     for (let i = 1; i <= parseInt(localStorage.total,10); i++) {
 	let p = document.createElement('p');
-p.innerHTML = localStorage.get("item"+i);
+p.innerHTML = localStorage.getItem("item"+i);
         parent.prepend(p);
 }
 if('serviceWorker' in navigator){ navigator.serviceWorker.register('/service-worker.js');} else { console.log("Service worker is not supported"); }
