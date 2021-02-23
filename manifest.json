@@ -1,0 +1,1 @@
+{ "name": "Phone Chat", "short_name": "Phone Chat", "start_url": "/", "background_color": "#FFDCB5", "theme_color": "#1E003D", "icons": [ { "src": "img/phonechat.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable any" } ], "display": "standalone", "orientation":"portrait"}

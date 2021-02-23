@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+
+<meta name="theme-color" content="#1E003D"/> <link rel="apple-touch-icon" href="img/game.png"/>
+
+<title>Phone Chat</title>
+
+<meta name="description" content="try to chat"/>
+<meta name="viewport" content="width=device-width" initial-scale=1.0>
+<!--<link rel="stylesheet" href="styles.css">-->
+<link rel="manifest" href="manifest.json">
+
+<script >
+       function changetext()
+{
+        txt="";
+       
+        txt=document.getElementById('text').value;
+        
+        regtxt=txt.match(/\d+/g).join('');
+       
+        document.getElementById('text').value=regtxt;
+        
+        document.getElementById('myform').submit();
+}
+</script>
+
+<style>         
+#text
+{
+height:100px;
+width:100%;
+font-size:50px;
+color:white;
+background:cadetblue;
+}
+</style>
+</head>
+
+<body>
+<form id="myform" action="https://api.whatsapp.com/send">
+<input id="text" type="text" name="phone" onChange="changetext()">
+</form>
+
+<script>
+if('serviceWorker' in navigator){ navigator.serviceWorker.register('/service-worker.js'); } else { console.log("Service worker is not supported"); }
+</script>
+
+</body>
+</html>
