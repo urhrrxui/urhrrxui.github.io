@@ -13,9 +13,20 @@
 <link rel="manifest" href="manifest.json">
 
 <script >
+	
+	"use strict";
+let swRegistration =null;
     async function showNotification() {
 	const result = await Notification.requestPermission();
 	if (result === 'granted') {
+		const options = {
+    body: "Testing Our Notification",
+    icon: "img/phonechat.png"
+  };
+  swRegistration.showNotification("PWA Notification!", options);
+		
+		
+		
 //var noti = new Notification('Hello!');
 alert("notification ghost");}
 		//, {body: 'It’s me.',icon: 'img/phonechat.png'});
@@ -80,7 +91,7 @@ background:cadetblue;
 </head>
 
 <body>
-step-n5
+step-n6
 <form id="myform" action="https://api.whatsapp.com/send">
 
 <input id="storage" type="button" value="check storage" onClick="checkStorage();">
@@ -97,7 +108,11 @@ step-n5
 p.innerHTML = localStorage.getItem("item"+i);
         parent.prepend(p);
 }
-if('serviceWorker' in navigator){ navigator.serviceWorker.register('/service-worker.js');} else { console.log("Service worker is not supported"); }
+if('serviceWorker' in navigator){ 
+	navigator.serviceWorker
+		.register('/service-worker.js')
+		.then(swReg => {swRegistration = swReg;});
+} else { console.log("Service worker is not supported"); }
 </script>
 
 </body>
