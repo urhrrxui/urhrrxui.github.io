@@ -16,7 +16,9 @@
 	
 	"use strict";
 let swRegistration =null;
-    async function showNotification() {
+	
+async function showNotification()
+	{
 	const result = await Notification.requestPermission();
 	if (result === 'granted') {
 		const options = {
@@ -24,58 +26,30 @@ let swRegistration =null;
     icon: "img/phonechat.png"
   };
   swRegistration.showNotification("PWA Notification!", options);
-		
-		
-		
-//var noti = new Notification('Hello!');
-alert("notification ghost");}
-		//, {body: 'It’s me.',icon: 'img/phonechat.png'});
-//noti.onclick = () => alert('clicked');
-//}
-alert("where is noti?");
 }
 
-    //localStorage.total=0;
     
-       async function getClipboardContent() {
+async function getClipboardContent() {
   try {
-    const textcb = await navigator.clipboard.readText();
-    //alert('Pasted content: ', textcb);
-      document.getElementById('text').value=textcb;
-      changetext();
-  } catch (err) {
-    alert('Failed to read clipboard contents: ', err);
-  }
-}
-       function checkStorage(){
-           alert(localStorage.test);
-           localStorage.test = document.getElementById("text").value;
-           
-           }
-       function changetext()
-{
-        txt="";
-utotal = 0;
-       var parent = document.getElementById("parent");
-        txt=document.getElementById('text').value;
-        
-        regtxt=txt.match(/\d+/g).join('');
-       
-        document.getElementById('text').value=regtxt;
-	alert(utotal);
-    utotal=parseInt(localStorage.total,10)+1;
-	alert(utotal);
+	  var parent = document.getElementById("parent");
+    const txt = await navigator.clipboard.readText();
+	  var regtxt=txt.match(/\d+/g).join('');
+      document.getElementById('text').value=regtxt;
+      var utotal=parseInt(localStorage.total,10)+1;
     localStorage.setItem("item"+utotal,regtxt);
     localStorage.total=utotal;
     
 var p = document.createElement('p');
 p.innerHTML = localStorage.getItem("item"+utotal);
         parent.prepend(p);
-alert("ok");
-        //document.getElementById('myform').submit();
+  } catch (err) {
+    //alert('Failed to read clipboard contents: ', err);
+  }
 }
-    
-    
+				
+function checkStorage(){
+           alert(localStorage.test);
+           localStorage.test = document.getElementById("text").value;}  
 </script>
 
 <style>         
@@ -85,13 +59,12 @@ height:100px;
 width:100%;
 font-size:50px;
 color:white;
-background:cadetblue;
+background:yellowgreen;
 }
 </style>
 </head>
 
 <body>
-step-n7
 <form id="myform" action="https://api.whatsapp.com/send">
 
 <input id="storage" type="button" value="check storage" onClick="checkStorage();">
