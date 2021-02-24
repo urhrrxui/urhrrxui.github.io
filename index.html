@@ -112,7 +112,7 @@ if('serviceWorker' in navigator){
 	navigator.serviceWorker
 		.register('/service-worker.js')
 		.then(swReg => {alert("reg ok");swRegistration = swReg;})
-.catch(error=>{alert("error);});
+.catch(error=>{alert("error");});
 } else { console.log("Service worker is not supported"); }
 </script>
 
