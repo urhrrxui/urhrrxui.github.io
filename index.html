@@ -13,38 +13,32 @@
 <link rel="manifest" href="manifest.json">
 
 <script >
-	
-	"use strict";
+"use strict";
 let swRegistration =null;
 	
-async function showNotification()
-	{
-	const result = await Notification.requestPermission();
-	if (result === 'granted') {
-		const options = {
+async function showNotification(){
+const result = await Notification.requestPermission();
+if (result === 'granted') {
+const options = {
     body: "Testing Our Notification",
-    icon: "img/phonechat.png"
-  };
-  swRegistration.showNotification("PWA Notification!", options);
-}
+    icon: "img/phonechat.png"};
+swRegistration.showNotification("PWA Notification!", options);}
 
     
-async function getClipboardContent() {
-  try {
-	  var parent = document.getElementById("parent");
-    const txt = await navigator.clipboard.readText();
-	  var regtxt=txt.match(/\d+/g).join('');
-      document.getElementById('text').value=regtxt;
-      var utotal=parseInt(localStorage.total,10)+1;
-    localStorage.setItem("item"+utotal,regtxt);
-    localStorage.total=utotal;
-    
-var p = document.createElement('p');
-p.innerHTML = localStorage.getItem("item"+utotal);
-        parent.prepend(p);
-  } catch (err) {
-    //alert('Failed to read clipboard contents: ', err);
-  }
+async function getClipboardContent(){
+try{
+var parent = document.getElementById("parent");
+const txt = await navigator.clipboard.readText();
+var regtxt = txt.match(/\d+/g).join('');
+	document.getElementById('text').value = regtxt;
+	var utotal = parseInt(localStorage.total,10)+1;
+	localStorage.setItem("item"+utotal,regtxt);
+	localStorage.total = utotal;
+	var p = document.createElement('p');
+	p.innerHTML = localStorage.getItem("item"+utotal);
+	parent.prepend(p);}
+catch (err) {
+	alert('Failed to read clipboard contents: ', err);}
 }
 				
 function checkStorage(){
@@ -84,7 +78,7 @@ p.innerHTML = localStorage.getItem("item"+i);
 if('serviceWorker' in navigator){ 
 	navigator.serviceWorker
 		.register('/service-worker.js')
-		.then(swReg => {alert("reg ok");swRegistration = swReg;})
+		.then(swReg => {swRegistration = swReg;})
 .catch(error=>{alert("error");});
 } else { console.log("Service worker is not supported"); }
 </script>
