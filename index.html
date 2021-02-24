@@ -16,10 +16,34 @@
 "use strict";
 let swRegistration =null;
 
-				
+async function showNotification(){
+const result = await Notification.requestPermission();
+if (result === 'granted') {
+const options = {
+    body: "Testing Our Notification",
+    icon: "img/phonechat.png"};
+swRegistration.showNotification("PWA Notification!", options);}}
+
+async function getClipboardContent(){
+try{
+var parent = document.getElementById("parent");
+const txt = await navigator.clipboard.readText();
+var regtxt = txt.match(/\d+/g).join('');
+	document.getElementById('text').value = regtxt;
+	var utotal = parseInt(localStorage.total,10)+1;
+	localStorage.setItem("item"+utotal,regtxt);
+	localStorage.total = utotal;
+	var p = document.createElement('p');
+	p.innerHTML = localStorage.getItem("item"+utotal);
+	parent.prepend(p);}
+catch (err) {
+	alert('Failed to read clipboard contents: ', err);}
+}
+	
 function checkStorage(){
            alert(localStorage.test);
-           localStorage.test = document.getElementById("text").value;}  
+           localStorage.test = document.getElementById("text").value;}
+  
 </script>
 
 <style>         
@@ -33,12 +57,20 @@ background:darkgreen;
 border:0px;
 border-radius:5px;
 }
+input[type=button]{
+padding:5px;
+color:white;
+border:0px;
+border-radius:5px;
+background:yellowgreen;
+}
+	
 </style>
 </head>
 
 <body>
 <form id="myform" action="https://api.whatsapp.com/send">
-1
+
 <input id="storage" type="button" value="check storage" onClick="checkStorage();">
 <input id="cb" type="button" value="get clipboard" onClick="getClipboardContent();">
 	<input id="nb" type="button" value="notification test" onClick="showNotification();">
