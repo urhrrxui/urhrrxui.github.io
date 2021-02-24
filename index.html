@@ -25,21 +25,7 @@ const options = {
 swRegistration.showNotification("PWA Notification!", options);}
 
     
-async function getClipboardContent(){
-try{
-var parent = document.getElementById("parent");
-const txt = await navigator.clipboard.readText();
-var regtxt = txt.match(/\d+/g).join('');
-	document.getElementById('text').value = regtxt;
-	var utotal = parseInt(localStorage.total,10)+1;
-	localStorage.setItem("item"+utotal,regtxt);
-	localStorage.total = utotal;
-	var p = document.createElement('p');
-	p.innerHTML = localStorage.getItem("item"+utotal);
-	parent.prepend(p);}
-catch (err) {
-	alert('Failed to read clipboard contents: ', err);}
-}
+
 				
 function checkStorage(){
            alert(localStorage.test);
