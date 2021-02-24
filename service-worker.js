@@ -1,8 +1,8 @@
 // jshint esversion:6
 
 // Installing service workker
-const CACHE_NAME  = 'Simon-game';
-let resourcesToCache = ["./", "./img/game.png", "./game.js", "./sounds/wrong.mp3", "./sounds/blue.mp3", "./sounds/green.mp3", "./sounds/red.mp3", "./sounds/yellow.mp3", "./styles.css"];
+const CACHE_NAME  = 'phone-chat';
+let resourcesToCache = ["./", "./img/phonechat.png"];
 
 self.addEventListener("install", e=>{
     e.waitUntil(
@@ -22,7 +22,7 @@ self.addEventListener("fetch", e=>{
 });
 
 // Update a service worker
-const cacheWhitelist = ['Simon-game'];
+const cacheWhitelist = ['phone-chat'];
 self.addEventListener('activate', event => {
     event.waitUntil(
       caches.keys().then(cacheNames => {
