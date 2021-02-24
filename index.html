@@ -13,7 +13,16 @@
 <link rel="manifest" href="manifest.json">
 
 <script >
-    
+    async function showNotification() {
+	const result = await Notification.requestPermission();
+	if (result === 'granted') {
+		const noti = new Notification('Hello!', {
+			body: 'It’s me.'
+		});
+		noti.onclick = () => alert('clicked');
+	}
+}
+
     //localStorage.total=0;
     
        async function getClipboardContent() {
@@ -70,11 +79,12 @@ background:cadetblue;
 </head>
 
 <body>
-
+step-n0
 <form id="myform" action="https://api.whatsapp.com/send">
 
 <input id="storage" type="button" value="check storage" onClick="checkStorage();">
 <input id="cb" type="button" value="get clipboard" onClick="getClipboardContent();">
+	<input id="nb" type="button" value="notification test" onClick="showNotification();">
 <input id="text" type="text" name="phone">
 
 <div id="parent"></div>
