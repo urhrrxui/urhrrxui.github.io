@@ -15,10 +15,10 @@
 <script >
     async function showNotification() {
 	const result = await Notification.requestPermission();
-	if (result === 'granted') {
-		const noti = new Notification('Hello!', {body: 'It’s me.',icon: 'img/phonechat.png'});
+	if (result === 'granted') {var noti = new Notification('Hello!');}
+		//, {body: 'It’s me.',icon: 'img/phonechat.png'});
 //noti.onclick = () => alert('clicked');
-	}
+//}
 alert("where is noti?");
 }
 
@@ -78,7 +78,7 @@ background:cadetblue;
 </head>
 
 <body>
-step-n3
+step-n4
 <form id="myform" action="https://api.whatsapp.com/send">
 
 <input id="storage" type="button" value="check storage" onClick="checkStorage();">
