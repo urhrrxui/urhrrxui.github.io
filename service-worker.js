@@ -2,7 +2,7 @@
 
 // Installing service workker
 const CACHE_NAME  = 'phone-chat';
-let resourcesToCache = ["./", "./manifest.json", "./index.html", "./img/phonechat.png"];
+let resourcesToCache = ["./", "./index.html", "./img/phonechat.png"];
 
 self.addEventListener("install", e=>{
     e.waitUntil(
