@@ -1,5 +1,5 @@
 // jshint esversion:6
-//1
+//12
 
 // Installing service workker
 const CACHE_NAME  = 'phone-chat';
