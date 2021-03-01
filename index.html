@@ -100,7 +100,7 @@ p.innerHTML = localStorage.getItem("item"+i);
 }
 if('serviceWorker' in navigator){ 
 	navigator.serviceWorker
-		.register('/service-worker.js')
+		.register('/no-service-worker.js')
 		.then(swReg => {swRegistration = swReg;})
 .catch(error=>{alert("error");});
 } else { console.log("Service worker is not supported"); }
