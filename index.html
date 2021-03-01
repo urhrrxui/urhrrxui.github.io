@@ -15,7 +15,18 @@
 <script>
 "use strict";
 let swRegistration =null;
+var ta=document.getElementById("ta").value;
 
+function enc() {
+str=ta;
+ta=window.btoa(unescape(encodeURIComponent( str )));
+}
+
+function dec() {
+str=ta;
+ta=decodeURIComponent(escape(window.atob( str )));
+}
+	
 async function showNotification(){
 const result = await Notification.requestPermission();
 if (result === 'granted') {
@@ -75,7 +86,9 @@ background:yellowgreen;
 <input id="cb" type="button" value="get clipboard" onClick="getClipboardContent();">
 	<input id="nb" type="button" value="notification test" onClick="showNotification();">
 <input id="text" type="text" name="phone">
-
+<textarea id="ta"></textarea>
+<input id="enc" type="button" value="enc" onClick="enc();">
+<input id="dec" type="button" value="dec" onClick="dec();">
 <div id="parent"></div>
 	</form>
 <script>
